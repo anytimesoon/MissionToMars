@@ -1,16 +1,14 @@
 # frozen_string_literal: true
 
 class Rover
-  attr_reader :directions
   attr_accessor :x_coord, :y_coord, :orientation, :map
-
-  @directions = %w[N E S W]
 
   def initialize(x, y, orientation, map)
     @x_coord = x
     @y_coord = y
     @orientation = orientation
     @map = map
+    @directions = %w[N E S W]
   end
 
   def move
@@ -37,6 +35,18 @@ class Rover
       end
     else
       puts "orientation unknown"
+    end
+  end
+
+  def turn(turn_direction)
+    i = @directions.find_index(@orientation)
+    case turn_direction
+    when "L"
+      @orientation = @directions[(i - 1) % @directions.length]
+    when "R"
+      @orientation = @directions[(i + 1) % @directions.length]
+    else
+      puts "unrecognised direction"
     end
   end
 

@@ -20,4 +20,19 @@ describe Rover do
       expect(rover).to have_attributes(x_coord: 0, y_coord: 3)
     end
   end
+
+  describe "#turn" do
+    it "turns the orientation left" do
+      map = MarsMap.new(5, 5)
+      rover = Rover.new(3, 1, "N", map)
+      rover.turn("L")
+      expect(rover).to have_attributes(orientation: "W")
+    end
+    it "turns the orientation right" do
+      map = MarsMap.new(5, 5)
+      rover = Rover.new(3, 1, "W", map)
+      rover.turn("R")
+      expect(rover).to have_attributes(orientation: "N")
+    end
+  end
 end
