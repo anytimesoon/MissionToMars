@@ -36,7 +36,7 @@ class Rover
         @x_coord = x
       end
     else
-      puts "you can't leave the boundary of the map"
+      puts "orientation unknown"
     end
   end
 
