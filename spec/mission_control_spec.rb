@@ -11,16 +11,16 @@ describe MissionControl do
       map = MarsMap.new(5,5)
       rover = Rover.new(1, 2, "N", map)
       movements = "LMLMLMLMM"
-      mission_control = MissionControl.new(rover, movements)
-      mission_control.send_objectives
+      mission_control = MissionControl.new
+      mission_control.send_objectives(rover, movements)
       expect(rover).to have_attributes(x_coord: 1, y_coord: 3, orientation: "N")
     end
     it "sends objectives to another rover" do
       map = MarsMap.new(5,5)
       rover = Rover.new(3, 3, "E", map)
       movements = "MMRMMRMRRM"
-      mission_control = MissionControl.new(rover, movements)
-      mission_control.send_objectives
+      mission_control = MissionControl.new
+      mission_control.send_objectives(rover, movements)
       expect(rover).to have_attributes(x_coord: 5, y_coord: 1, orientation: "E")
     end
   end

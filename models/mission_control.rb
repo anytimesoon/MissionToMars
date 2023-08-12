@@ -1,20 +1,14 @@
 # frozen_string_literal: true
 
 class MissionControl
-  attr_accessor :rover, :movements
-  def initialize(rover, movements)
-    @rover = rover
-    @movements = movements
-  end
-
-  def send_objectives
+  def send_objectives(rover, movements)
     objectives = movements.split("")
     objectives.each do |objective|
       case objective
       when "M"
-        @rover.move
+        rover.move
       when "L", "R"
-        @rover.turn(objective)
+        rover.turn(objective)
       else
         puts "unrecognised objective"
       end
